@@ -1,15 +1,15 @@
 
-import java.awt.CardLayout;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
+/**
+ * 
+ * @author carma
+ */
 public class WelcomeScreen extends JPanel {
 
     JLabel title;
@@ -17,21 +17,31 @@ public class WelcomeScreen extends JPanel {
     JButton quit;
 
     MainWindow mw;
-
+/**
+ * 
+ * @param t 
+ */
     public void setTitle(String t) {
         title.setText(t);
     }
-
+/**
+ * Este método se ejecuta cuando se hace clic en el botón "Quit".
+ */
     public void quitButtonActionListener() {
         if (JOptionPane.showConfirmDialog(this, "Are you sure?") == JOptionPane.OK_OPTION) {
             System.exit(0);
         }
     }
-
+/**
+ * Este método se ejecuta cuando se hace clic en el botón "Go".
+ */
     public void goButtonActionListener() {
         mw.showCard("Two");
     }
-
+/**
+ * 
+ * @param mw 
+ */
     public WelcomeScreen(MainWindow mw) {
         this.mw = mw;
 
@@ -43,16 +53,12 @@ public class WelcomeScreen extends JPanel {
         go = new JButton(NEW__GAME_TXT);
         quit = new JButton(QUIT_TXT);
 
-        go.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                goButtonActionListener();
-            }
+        go.addActionListener((ActionEvent event) -> {
+            goButtonActionListener();
         });
 
-        quit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                quitButtonActionListener();
-            }
+        quit.addActionListener((ActionEvent event) -> {
+            quitButtonActionListener();
         });
 
         add(go);

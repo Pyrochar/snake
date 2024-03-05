@@ -1,6 +1,5 @@
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -8,20 +7,31 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 //needs massive improvements
+/**
+ * 
+ * @author carma
+ */
 public class CustomizeBoardScreen extends JPanel {
 
     JButton go;
     JButton quit;
     MainWindow mw;
-
+/**
+ * Este método se ejecuta cuando se hace clic en el botón "Quit".
+ */
     public void quitButtonActionListener() {
         mw.showCard("Two");
     }
-
+/**
+ * Este método se ejecuta cuando se hace clic en el botón "Go".
+ */
     public void goButtonActionListener() {
         mw.showCard("Four");
     }
-
+/**
+ * 
+ * @param mw 
+ */
     public CustomizeBoardScreen(MainWindow mw) {
         this.mw = mw;
 
@@ -35,16 +45,12 @@ public class CustomizeBoardScreen extends JPanel {
         go = new JButton("Start Game");
         quit = new JButton("Back");
 
-        go.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                goButtonActionListener();
-            }
+        go.addActionListener((ActionEvent event) -> {
+            goButtonActionListener();
         });
 
-        quit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                quitButtonActionListener();
-            }
+        quit.addActionListener((ActionEvent event) -> {
+            quitButtonActionListener();
         });
 
         add(go);

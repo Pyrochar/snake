@@ -10,13 +10,16 @@ import javax.swing.JPanel;
 //note: board does not change dynamically 
 //note: board shape and window aesthetics to be set
 //note: unification of colors not done
+/**
+ * 
+ * @author carma
+ */
 public class BoardDrawing extends JPanel {
 
-    /**
+/**
      *
      */
-    int b = 0;
-    int row = 8;
+        int row = 8;
     int col = 8;
     ArrayList<Rectangle> cells;
     //int player;
@@ -25,7 +28,12 @@ public class BoardDrawing extends JPanel {
     BoardScreen bs;
     //ArrayList<Portal> portals;
     //ArrayList<Player> players;
-
+/**
+ * 
+ * @param row
+ * @param col
+ * @param bs 
+ */
     public BoardDrawing(int row, int col, BoardScreen bs) {
         this.bs = bs;
 
@@ -37,7 +45,7 @@ public class BoardDrawing extends JPanel {
         //    bs.players.add(new Player(i));
         //get and add player(s) names
 
-        cells = new ArrayList<Rectangle>();
+        cells = new ArrayList<>();
 
         cellnos = new int[row * col];
         for (int i = 0; i < row; i++) {
@@ -57,14 +65,18 @@ public class BoardDrawing extends JPanel {
         }
 
         int noPorts = 8;
-        bs.portals = new ArrayList<Portal>(noPorts);
+        bs.portals = new ArrayList<>(noPorts);
         for (int i = 0; i < noPorts; i++) {
             Portal temp = new Portal(row * col);
             bs.portals.add(temp);
         }
 
     }
-
+/**
+ * 
+ * @param g 
+ */
+        @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;//.create();
@@ -103,14 +115,14 @@ public class BoardDrawing extends JPanel {
         }
 
         g2d.setColor(Color.white);
-        for (Rectangle cell : cells) {
+        cells.forEach(cell -> {
             g2d.fill(cell);
-        }
+            });
 
         g2d.setColor(Color.BLUE);
-        for (Rectangle cell : cells) {
+        cells.forEach(cell -> {
             g2d.draw(cell);
-        }
+            });
 
         //Draw cells and numbers
         //may have to modify program based on number of players
@@ -194,6 +206,11 @@ public class BoardDrawing extends JPanel {
 		}
 	}
      */
+    /**
+     * 
+     * @param pnos
+     * @return 
+     */
     public String ensurePlayerPosition(int pnos) {
         String message = "";
         for (Portal port : bs.portals) {
@@ -213,6 +230,11 @@ public class BoardDrawing extends JPanel {
 	public void setPlayer(int a){
 		player = a;
 	}
+     */
+    /**
+     * 
+     * @param a
+     * @param pnos 
      */
     public void setPlayer(int a, int pnos) {
         bs.players.get(pnos).incPosition(a);

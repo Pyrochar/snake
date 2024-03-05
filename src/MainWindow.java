@@ -1,29 +1,34 @@
 
 import java.awt.CardLayout;
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-public class MainWindow extends JFrame {
+/**
+ * 
+ * @author carma
+ */
+public final class MainWindow extends JFrame {
 
     JPanel cards;
-    String cardDisplayed;
     CardLayout cl;
 
     WelcomeScreen s1;
     PlayerSelectScreen s2;
     CustomizeBoardScreen s3;
     BoardScreen s4;
-
+/**
+ * 
+ * @param cardName 
+ */
     public void showCard(String cardName) {
         cl.show(cards, cardName);
     }
-
+/**
+ * Resetear todos.
+ *
+ */
     public void resetAll() {
         s1 = new WelcomeScreen(this);
         s2 = new PlayerSelectScreen(this);
@@ -37,11 +42,17 @@ public class MainWindow extends JFrame {
     }
 
     //maintaining board info
+    /**
+     * Modificar Board.
+     */
     public void setBoard() {
         s4 = new BoardScreen(this);
         cards.add(s4, "Four");
     }
-
+/**
+ * Crea el main.
+ * 
+ */
     public MainWindow() {
 
         setVisible(true);
